@@ -127,6 +127,23 @@ class Blackjack:
                 game=Blackjack(self.player)
                 game.player_turn()
                 game.dealer_turn()
+class Slot_machine:
+    def __init__(self, player):
+        self.player = player
+        self.simbols = ['🍉', '🍉', '🍉', '🍉', '🍉', '🍉', '🍉', '🍒', '🍒', '🍒', '🍒', '🍒', '🍒', '🍒','🍇', '🍇', '🍇', '🍇', '🍇', '🍇', '🍇',  '🍋', '🍋', '🍋', '🍋', '🍋', '🍋', '🍋', '💰', '💰', '💰']
+        self.trail_1 = []
+        self.trail_2 = []
+        self.trail_3 = []
+        while True:
+            self.bet = int(input("How many credits would you like to bet? "))
+            if 0 < self.bet <= self.player.credits:
+                break
+            print("Enter a valid bet")
+        self.player.substract_credits(self.bet)
+        random.shuffle()
+        
+class Roulette:
+    pass
                     
 print('==============================================================================================')
 print('|                         🎰                       ♠️                              💰         |')
@@ -151,6 +168,16 @@ if age >=21:
         game=Blackjack(player1)
         game.player_turn()
         game.dealer_turn()
+    elif game_selected.lower() == "slot_machine":
+        credits=int(input('\nHow many credits would you like to start with? '))
+        player1=Player(fname,age,credits)
+        game=Slot_machine(player1)
+
+    elif game_selected.lower() == "roulette":
+        credits=int(input('\nHow many credits would you like to start with? '))
+        player1=Player(fname,age,credits)
+        game=Roulette(player1)
+
     else:
         print("\nno")
 else:
